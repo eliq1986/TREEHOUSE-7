@@ -59,7 +59,7 @@ qwertyDiv.addEventListener("click", (event) => {
          button.disabled = "true";
          return letterFound;
        }
-  }
+  
 
 });
 addPhraseToDisplay(phraseArray);
