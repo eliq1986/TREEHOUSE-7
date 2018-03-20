@@ -59,11 +59,13 @@ qwertyDiv.addEventListener("click", (event) => {
           button.className = "chosen";
             button.disabled = "true";
           let letterFound = checkLetter(button);
-          console.log(letterFound);
           if (letterFound === undefined) {
-            const heart = document.querySelector("ol")
-
-            heart.removeChild("li");
+            let hearts = document.getElementsByClassName("tries");
+             for (let i  = 0; i < hearts.length; i++){
+            let parent = hearts[i].parentNode;
+            parent.removeChild(hearts[i]);
+            break;
+}
 
 
 
