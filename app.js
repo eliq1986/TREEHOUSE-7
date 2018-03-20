@@ -42,10 +42,8 @@ function checkLetter(buttonClicked) {
     const elementsWithClass = document.getElementsByClassName("letter");
     for (let i = 0; i < elementsWithClass.length; i++) {
         if (buttonClicked.textContent.toLowerCase() === elementsWithClass[i].textContent.toLowerCase()) {
-            elementsWithClass[i].classList.add('show');
-
-
-
+            elementsWithClass[i] = elementsWithClass[i].classList.add('show');
+            
       }
     }
   }
