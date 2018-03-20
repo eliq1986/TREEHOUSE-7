@@ -2,11 +2,13 @@ const qwertyDiv = document.getElementById("qwerty");
 const startGame = document.querySelector("a");
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
+
 const phrasesArr = ["abcde",
                     "may the force be with you",
                     "much to learn you still have",
                     "join the dark side we have cookies",
                     "use the force"];
+
 let missed = 0;
 
 startGame.addEventListener("click", () => { // removes startup screen
@@ -44,13 +46,8 @@ function checkLetter(buttonClicked) {
         if (elementsWithClass[i].textContent === buttonClicked.textContent) {
            elementsWithClass[i] = elementsWithClass[i].classList.add("show");
              letter = elementsWithClass[i];
-
-
-       }
-
-
-
-    }
+ }
+ }
      return letter;
   }
 qwertyDiv.addEventListener("click", (event) => {
@@ -60,16 +57,23 @@ qwertyDiv.addEventListener("click", (event) => {
             button.disabled = "true";
           let letterFound = checkLetter(button);
           if (letterFound === undefined) {
+            missed++;
             let hearts = document.getElementsByClassName("tries");
              for (let i  = 0; i < hearts.length; i++){
-            let parent = hearts[i].parentNode;
-            parent.removeChild(hearts[i]);
-            break;
+             let parent = hearts[i].parentNode;
+             parent.removeChild(hearts[i]);
+             break;
 }
-
-
-
 }
+}
+const lettersWithClassLetter= document.getElementsByClassName("letter").length;
+const lettersWithClassShow = document.getElementsByClassName("show").length;
+
+
+  if (lettersWithClassShow === lettersWithClassLetter) {
+    console.log("You win");
 }
   });
+
+
   addPhraseToDisplay(phraseArray);
