@@ -4,7 +4,7 @@ const startGame = document.querySelector("a");
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
 const keyButton = document.getElementsByTagName("button");
-const phrasesArr = ["abcde", "May the force be with you", "Much to learn you still have", "Join the dark side we have cookies", "Use the force"]
+const phrasesArr = ["abcde", "May the force be with you", "Much to learn you still have", "Join the dark side we have cookies", "Use the force"];
 let missed = 0;
 
 startGame.addEventListener("click", function() { // removes startup screen
@@ -17,9 +17,9 @@ function randomNumber() { //Generates random number
 
 function getRandomPhraseArray(arr) { //gets random phrase and turns it into an array of letters
     let splitArray = arr[randomNumber()];
-    return splitArray = splitArray.split([, ]);
+    return splitArray = splitArray.split([ , ]);
 }
-const phraseArray = getRandomPhraseArray(phrasesArr); //array of letters gets captured by a variable
+ const phraseArray = getRandomPhraseArray(phrasesArr); //array of letters gets captured by a variable
 
 function addPhraseToDisplay(arr) { //adds random phrease to display
     for (let i = 0; i < arr.length; i++) {
@@ -59,7 +59,6 @@ qwertyDiv.addEventListener("click", (event) => {
          button.disabled = "true";
          return letterFound;
        }
-  
+  });
 
-});
 addPhraseToDisplay(phraseArray);
