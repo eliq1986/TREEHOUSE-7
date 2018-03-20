@@ -2,7 +2,11 @@ const qwertyDiv = document.getElementById("qwerty");
 const startGame = document.querySelector("a");
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
-const phrasesArr = ["abcde", "may the force be with you", "much to learn you still have", "join the dark side we have cookies", "use the force"];
+const phrasesArr = ["abcde",
+                    "may the force be with you",
+                    "much to learn you still have",
+                    "join the dark side we have cookies",
+                    "use the force"];
 let missed = 0;
 
 startGame.addEventListener("click", () => { // removes startup screen
@@ -34,25 +38,36 @@ function addPhraseToDisplay(arr) { //adds random phrease to display
     }
   }
 function checkLetter(buttonClicked) {
+    let letter;
     const elementsWithClass = document.getElementsByClassName("letter");
     for (let i = 0; i < elementsWithClass.length; i++) {
         if (elementsWithClass[i].textContent === buttonClicked.textContent) {
-            elementsWithClass[i] = elementsWithClass[i].classList.add("show");
-            let x = elementsWithClass[i];
-            return x;
+           elementsWithClass[i] = elementsWithClass[i].classList.add("show");
+             letter = elementsWithClass[i];
+
+
        }
+
+
+
     }
+     return letter;
   }
-
-
 qwertyDiv.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
           const button = event.target;
           button.className = "chosen";
-          button.disabled = "true";
-         let letterFound = checkLetter(button);
-         return letterFound;
+            button.disabled = "true";
+          let letterFound = checkLetter(button);
+          console.log(letterFound);
+          if (letterFound === undefined) {
+            const heart = document.querySelector("ol")
 
-       }
+            heart.removeChild("li");
+
+
+
+}
+}
   });
   addPhraseToDisplay(phraseArray);
