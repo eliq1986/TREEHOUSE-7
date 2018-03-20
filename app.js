@@ -3,7 +3,6 @@ const phrase = document.getElementById("phrase");
 const startGame = document.querySelector("a");
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
-const keyButton = document.getElementsByTagName("button");
 const phrasesArr = ["abcde", "May the force be with you", "Much to learn you still have", "Join the dark side we have cookies", "Use the force"];
 let missed = 0;
 
@@ -19,6 +18,7 @@ function getRandomPhraseArray(arr) { //gets random phrase and turns it into an a
     let splitArray = arr[randomNumber()];
     return splitArray = splitArray.split([ , ]);
 }
+
  const phraseArray = getRandomPhraseArray(phrasesArr); //array of letters gets captured by a variable
 
 function addPhraseToDisplay(arr) { //adds random phrease to display
@@ -26,30 +26,29 @@ function addPhraseToDisplay(arr) { //adds random phrease to display
         let li = document.createElement("li"); //creates an "li" element for each letter
         li.textContent = arr[i];
         phraseDisplay.appendChild(li);
-
-        if (li.textContent !== " ") {
+       if (li.textContent !== " ") {
             li.className = "letter";
         } else {
             li.className = "space";
 
         }
+
     }
 }
+
+
 
 function checkLetter(buttonClicked) {
     const elementsWithClass = document.getElementsByClassName("letter");
     for (let i = 0; i < elementsWithClass.length; i++) {
         if (buttonClicked.textContent.toLowerCase() === elementsWithClass[i].textContent.toLowerCase()) {
-             elementsWithClass[i].className = "show";
+            elementsWithClass[i].classList.add('show');
 
 
 
       }
     }
   }
-
-
-
 
 qwertyDiv.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
@@ -60,5 +59,4 @@ qwertyDiv.addEventListener("click", (event) => {
          return letterFound;
        }
   });
-
-addPhraseToDisplay(phraseArray);
+  addPhraseToDisplay(phraseArray);
