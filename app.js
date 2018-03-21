@@ -2,6 +2,7 @@ const qwertyDiv = document.getElementById("qwerty");
 const startGame = document.querySelector("a");
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
+const lose = document.querySelector("h2");
 
 const phrasesArr = ["Do or do not",
     "May the force be with you",
@@ -48,7 +49,7 @@ const phraseArray = getRandomPhraseArray(phrasesArr); //array of letters gets ca
 function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i++) {
         let li = document.createElement("li");
-        li.textContent = arr[i];
+        li.textContent = arr[i].toUpperCase();
         phraseDisplay.appendChild(li);
         if (li.textContent !== " ") {
             li.className = "letter";
@@ -69,6 +70,7 @@ function checkLetter(buttonClicked) { //Removes
         if (elementsWithClass[i].textContent.toLowerCase() === buttonClicked.textContent.toLowerCase()) {
             elementsWithClass[i] = elementsWithClass[i].classList.add("show");
             letter = elementsWithClass[i];
+
         }
     }
     return letter;
@@ -119,22 +121,17 @@ qwertyDiv.addEventListener("click", (event) => {
 * Compares length of both elements with diff classes, if they match win.
 *********************************************************/
 
+const lettersWithClassLetter = document.getElementsByClassName("letter").length;
+const lettersWithClassShow = document.getElementsByClassName("show").length;
 
-    const lettersWithClassLetter = document.getElementsByClassName("letter").length;
-    const lettersWithClassShow = document.getElementsByClassName("show").length;
-
-    if (lettersWithClassShow === lettersWithClassLetter) {
-        const h2 = document.querySelector("h2");
-        const a = document.querySelector("a");
-        a.style.display = "none";
-        h2.textContent = "You Win!!!!";
+   if (lettersWithClassShow === lettersWithClassLetter) {
+        startGame.style.display = "none";
+        lose.textContent = "You Win!!!!";
         overlay.style.display = "block";
         overlay.classList.add("win");
 
     } else if (missed >= 5) {
-        const lose = document.querySelector("h2");
-        const a = document.querySelector("a");
-        a.style.display = "none";
+        startGame.style.display = "none";
         lose.textContent = "Try again";
         overlay.style.display = "block";
         overlay.classList.add("lose");

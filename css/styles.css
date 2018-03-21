@@ -40,6 +40,7 @@ h2 {
   font-family: 'Open Sans', sans-serif;
   font-size: var(--font-size-large);
   margin: 0;
+
 }
 
 button {
@@ -54,6 +55,12 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
 }
+button:hover {
+ background: #b76e79;
+ color: white;
+
+}
+
 
 .main-container {
   display: flex;
@@ -101,7 +108,8 @@ button {
 .show {
   color: #000;
   background-color: #76CE82;
-  transition: 2s;
+  transition: .5s;
+
 }
 
 /* Keyboard */
@@ -140,6 +148,7 @@ button {
   right: 0;
   border-radius: 5px;
 }
+
 
 .title {
   color: #FFF;
