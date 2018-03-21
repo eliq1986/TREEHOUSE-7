@@ -11,22 +11,40 @@ const phrasesArr = ["Do or do not",
 ];
 let missed = 0;
 
+/*********************************************************
+ * FUNCTION
+ * Removes startup screen
+ *********************************************************/
+
 startGame.addEventListener("click", () => { // removes startup screen
     overlay.style.display = "none";
 });
-/********************FUNCTION******************************/
+
+/*********************************************************
+ * FUNCTION
+ * Simple random number generator form 1 - 5
+ *********************************************************/
 function randomNumber() { //Generates random number
     return Math.floor(Math.random() * 5);
 }
-/********************FUNCTION******************************/
+/*********************************************************
+ * FUNCTION
+ * Grabs random quote and splits it into an array of characters
+ *********************************************************/
 function getRandomPhraseArray(arr) { //gets random phrase and turns it into an array of letters
     let splitArray = arr[randomNumber()];
     return splitArray = splitArray.split([, ]);
 }
-/********************FUNCTION******************************/
+/*********************************************************
+ * VARIABLE
+ * Puts getRandomPhraseArray function into a variable
+ *********************************************************/
 const phraseArray = getRandomPhraseArray(phrasesArr); //array of letters gets captured by a variable
 
-/********************FUNCTION******************************/
+/*********************************************************
+ * FUNCTION
+ * receives phraseArray as a argument and creats a li tag for each letter and appends it to the DOM with the class letter.
+ *********************************************************/
 function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i++) {
         let li = document.createElement("li");
@@ -39,7 +57,11 @@ function addPhraseToDisplay(arr) {
         }
     }
 }
-/********************FUNCTION******************************/
+/*********************************************************
+ * FUNCTION
+ * receives button as a argument and compares with li tag with class letterFound
+ * if buttonClicked === li tag letter class, it will change li class to show
+ *********************************************************/
 function checkLetter(buttonClicked) { //Removes
     let letter;
     const elementsWithClass = document.getElementsByClassName("letter");
@@ -51,13 +73,23 @@ function checkLetter(buttonClicked) { //Removes
     }
     return letter;
 }
-/********************FUNCTION******************************/
+/*********************************************************
+* FUNCTION
+* Targets button clicked in qwertyDiv
+* Changes button color to diff class; button also disabled
+ *********************************************************/
+
 qwertyDiv.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
         const button = event.target;
         button.className = "chosen";
         button.disabled = "true";
         let letterFound = checkLetter(button);
+        /*********************************************************
+         * If button returned from function checkLetter is undefinded, below runs
+         * Remove hearts aka tries from scoreboard
+         *********************************************************/
+
         if (letterFound === undefined) {
             missed++;
             const img = document.querySelectorAll("img")[0];
@@ -83,6 +115,11 @@ qwertyDiv.addEventListener("click", (event) => {
 
 
     }
+    /*********************************************************
+     * SCOBOARD CHECKER
+     * Compares length of both elements with diff classes, if they match win.
+     *********************************************************/
+
 
     const lettersWithClassLetter = document.getElementsByClassName("letter").length;
     const lettersWithClassShow = document.getElementsByClassName("show").length;
