@@ -85,12 +85,11 @@ qwertyDiv.addEventListener("click", (event) => {
         button.className = "chosen";
         button.disabled = "true";
         let letterFound = checkLetter(button);
-        /*********************************************************
-         * If button returned from function checkLetter is undefinded, below runs
-         * Remove hearts aka tries from scoreboard
-         *********************************************************/
-
-        if (letterFound === undefined) {
+/*********************************************************
+* If button returned from function checkLetter is undefinded, below runs
+* Remove hearts aka tries from scoreboard
+*********************************************************/
+    if (letterFound === undefined) {
             missed++;
             const img = document.querySelectorAll("img")[0];
             img.src = "images/lostHeart.png";
@@ -115,10 +114,10 @@ qwertyDiv.addEventListener("click", (event) => {
 
 
     }
-    /*********************************************************
-     * SCOBOARD CHECKER
-     * Compares length of both elements with diff classes, if they match win.
-     *********************************************************/
+/*********************************************************
+* SCOBOARD CHECKER
+* Compares length of both elements with diff classes, if they match win.
+*********************************************************/
 
 
     const lettersWithClassLetter = document.getElementsByClassName("letter").length;
@@ -131,6 +130,7 @@ qwertyDiv.addEventListener("click", (event) => {
         h2.textContent = "You Win!!!!";
         overlay.style.display = "block";
         overlay.classList.add("win");
+
     } else if (missed >= 5) {
         const lose = document.querySelector("h2");
         const a = document.querySelector("a");

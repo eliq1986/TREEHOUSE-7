@@ -101,7 +101,6 @@ button {
 .show {
   color: #000;
   background-color: #76CE82;
-  font-size: 2em;
   transition: 2s;
 }
 
