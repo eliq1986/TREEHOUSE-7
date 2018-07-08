@@ -11,22 +11,28 @@ const phrasesArr = ["Do or do not",
     "Use the force"
 ];
 let missed = 0;
+
 /*********************************************************
  * FUNCTION
  * Removes startup screen
  *********************************************************/
+
 startGame.addEventListener("click", () => { // removes startup screen
     overlay.style.display = "none";
 });
+
+/*********************************************************
+ * FUNCTION
+ * Simple random number generator form 1 - 5
+ *********************************************************/
+function randomNumber() { //Generates random number
+    return Math.floor(Math.random() * 5);
+}
 /*********************************************************
  * FUNCTION
  * Grabs random quote and splits it into an array of characters
  *********************************************************/
 function getRandomPhraseArray(arr) { //gets random phrase and turns it into an array of letters
-
- function randomNumber() { //Generates random number
-      return Math.floor(Math.random() * arr.length);
-  }
     let splitArray = arr[randomNumber()];
     return splitArray = splitArray.split([, ]);
 }
@@ -35,7 +41,7 @@ function getRandomPhraseArray(arr) { //gets random phrase and turns it into an a
  * Puts getRandomPhraseArray function into a variable
  *********************************************************/
 const phraseArray = getRandomPhraseArray(phrasesArr); //array of letters gets captured by a variable
-addPhraseToDisplay(phraseArray);
+
 /*********************************************************
  * FUNCTION
  * receives phraseArray as a argument and creats a li tag for each letter and appends it to the DOM with the class letter.
@@ -57,15 +63,15 @@ function addPhraseToDisplay(arr) {
  * receives button as a argument and compares with li tag with class letterFound
  * if buttonClicked === li tag letter class, it will change li class to show
  *********************************************************/
-function checkLetter(buttonClicked) {
-      let letter;
+function checkLetter(buttonClicked) { //Removes
+    let letter;
     const elementsWithClass = document.getElementsByClassName("letter");
     for (let i = 0; i < elementsWithClass.length; i++) {
-
         if (elementsWithClass[i].textContent.toLowerCase() === buttonClicked.textContent.toLowerCase()) {
             elementsWithClass[i] = elementsWithClass[i].classList.add("show");
             letter = elementsWithClass[i];
-       }
+
+        }
     }
     return letter;
 }
@@ -74,6 +80,7 @@ function checkLetter(buttonClicked) {
 * Targets button clicked in qwertyDiv
 * Changes button color to diff class; button also disabled
  *********************************************************/
+
 qwertyDiv.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
         const button = event.target;
@@ -85,7 +92,6 @@ qwertyDiv.addEventListener("click", (event) => {
 * Remove hearts aka tries from scoreboard
 *********************************************************/
     if (letterFound === undefined) {
-
             missed++;
             const img = document.querySelectorAll("img")[0];
             img.src = "images/lostHeart.png";
@@ -107,18 +113,24 @@ qwertyDiv.addEventListener("click", (event) => {
             const img = document.querySelectorAll("img")[4];
             img.src = "images/lostHeart.png";
         }
+
+
     }
 /*********************************************************
 * SCOBOARD CHECKER
 * Compares length of both elements with diff classes, if they match win.
 *********************************************************/
-   if (lettersWithClassShow.length === lettersWithClassLetter.length) {
+
+const lettersWithClassLetter = document.getElementsByClassName("letter").length;
+const lettersWithClassShow = document.getElementsByClassName("show").length;
+
+   if (lettersWithClassShow === lettersWithClassLetter) {
         startGame.style.display = "none";
         lose.textContent = "You Win!!!!";
         overlay.style.display = "block";
         overlay.classList.add("win");
 
-    } else if  (missed === 5) {
+    } else if (missed >= 5) {
         startGame.style.display = "none";
         lose.textContent = "Try again";
         overlay.style.display = "block";
@@ -126,3 +138,5 @@ qwertyDiv.addEventListener("click", (event) => {
 
     }
 });
+
+addPhraseToDisplay(phraseArray);
