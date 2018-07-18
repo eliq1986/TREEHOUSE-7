@@ -3,6 +3,8 @@
 [DEMO](https://eliq1986.github.io/TREEHOUSE-7/)
 
 Interactive phrase guessing game. You have up to 5 chances to guess the correct phrase. Make 5 incorrect guesses and the game ends.
+1. Vanilla Javascript
+2. DOM manipulation
 
 
 
