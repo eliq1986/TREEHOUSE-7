@@ -1,5 +1,5 @@
 const qwertyDiv = document.getElementById("qwerty");
-const startGame = document.querySelector("a");
+const startUpScreen = document.querySelector("a");
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
 const lose = document.querySelector("h2");
@@ -17,28 +17,27 @@ let missed = 0;
  * Removes startup screen
  *********************************************************/
 
-startGame.addEventListener("click", () => overlay.style.display = "none"); // removes startup screen
+startUpScreen.addEventListener("click", () => overlay.style.display = "none"); // removes startup screen
 
 /*********************************************************
  * FUNCTION
  * Simple random number generator form 1 - 5
  *********************************************************/
-function randomNumber() { //Generates random number
-    return Math.floor(Math.random() * 5);
-}
+const randomNumber = () =>  Math.floor(Math.random() * 5);
+
 /*********************************************************
  * FUNCTION
  * Grabs random quote and splits it into an array of characters
  *********************************************************/
-function getRandomPhraseArray(arr) { //gets random phrase and turns it into an array of letters
-    let splitArray = arr[randomNumber()];
-    return splitArray = splitArray.split([, ]);
+function getRandomPhraseArray(arr) {
+    let randomArr = arr[randomNumber()];
+    return splitArray = randomArr.split([,]);
 }
 /*********************************************************
  * VARIABLE
  * Puts getRandomPhraseArray function into a variable
  *********************************************************/
-const phraseArray = getRandomPhraseArray(phrasesArr); //array of letters gets captured by a variable
+const splitRandomPhrase = getRandomPhraseArray(phrasesArr); //array of letters gets captured by a variable
 
 /*********************************************************
  * FUNCTION
@@ -123,13 +122,13 @@ const lettersWithClassLetter = document.getElementsByClassName("letter").length;
 const lettersWithClassShow = document.getElementsByClassName("show").length;
 
    if (lettersWithClassShow === lettersWithClassLetter) {
-        startGame.style.display = "none";
+        startUpScreen.style.display = "none";
         lose.textContent = "You Win!!!!";
         overlay.style.display = "block";
         overlay.classList.add("win");
 
     } else if (missed >= 5) {
-        startGame.style.display = "none";
+        startUpScreen.style.display = "none";
         lose.textContent = "Try again";
         overlay.style.display = "block";
         overlay.classList.add("lose");
@@ -137,4 +136,4 @@ const lettersWithClassShow = document.getElementsByClassName("show").length;
     }
 });
 
-addPhraseToDisplay(phraseArray);
+addPhraseToDisplay(splitRandomPhrase);
