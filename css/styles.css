@@ -170,11 +170,6 @@ button:hover {
 .win a {
   color: var(--color-win);
 }
-
-.lose {
-  background-color: var(--color-lose);
-}
-
-.lose a {
-  color: var(--color-lose);
-}
+.btn__reset:hover, .keyrow button{
+  cursor: pointer;
+ }

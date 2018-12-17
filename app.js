@@ -17,9 +17,7 @@ let missed = 0;
  * Removes startup screen
  *********************************************************/
 
-startGame.addEventListener("click", () => { // removes startup screen
-    overlay.style.display = "none";
-});
+startGame.addEventListener("click", () => overlay.style.display = "none"); // removes startup screen
 
 /*********************************************************
  * FUNCTION
