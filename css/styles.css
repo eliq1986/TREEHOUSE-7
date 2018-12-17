@@ -128,7 +128,7 @@ button {
   background: #FFFFFF;
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  box-shadow: 0 3px 4px rgba(120, 207, 130, .5);
+  box-shadow: 0 3px 0px rgba(120, 207, 130, .5);
   transition: all .3s ease-in;
 }
 
@@ -174,11 +174,11 @@ button {
 /**Pseudo**/
 .btn__reset:hover {
     transform: translateY(-8px);
-    box-shadow: 0 6px 10px rgba(120, 207, 130, .8);
+    box-shadow: 0 6px 0px rgba(120, 207, 130, .8);
 }
 .btn__reset:active {
   transform: translateY(0);
-  box-shadow: 0 4px 5px gray;
+  box-shadow: 0 4px 0px rgba(120, 207, 130, .8);
 }
 /**Animations**/
 
