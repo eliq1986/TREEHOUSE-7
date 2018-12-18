@@ -44,16 +44,16 @@ const splitRandomPhrase = getRandomPhraseArray(phrasesArr); //array of letters g
  * receives phraseArray as a argument and creats a li tag for each letter and appends it to the DOM with the class letter.
  *********************************************************/
 function addPhraseToDisplay(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        let li = document.createElement("li");
-        li.textContent = arr[i].toUpperCase();
-        phraseDisplay.appendChild(li);
-        if (li.textContent !== " ") {
-            li.className = "letter";
-        } else {
-            li.className = "space";
-        }
-    }
+  arr.forEach(letter => {
+       let li = document.createElement("li");
+       li.textContent = letter.toUpperCase();
+       phraseDisplay.appendChild(li);
+     if (li.textContent !== " ") {
+           li.className = "letter";
+       } else {
+           li.className = "space";
+       }
+  });
 }
 /*********************************************************
  * FUNCTION
@@ -90,8 +90,9 @@ qwertyDiv.addEventListener("click", (event) => {
 *********************************************************/
     if (letterFound === undefined) {
             missed++;
-            const img = document.querySelectorAll("img")[0];
-            img.src = "images/lostHeart.png";
+            const hearts = document.querySelectorAll("img")[0];
+            console.log(document.querySelectorAll("img")[0].nextElementSibling);
+            hearts.src = "images/lostHeart.png";
 
         }
         if (missed === 2) {
