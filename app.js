@@ -1,6 +1,8 @@
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
 const endGameScreen = document.querySelector("h2");
+const startUpScreen = document.querySelector("a");
+
 
 const phrasesArr = ["Do or do not",
     "May the force be with you",
@@ -121,7 +123,7 @@ const lettersWithClassLetter = document.getElementsByClassName("letter").length;
 const lettersWithClassShow = document.getElementsByClassName("show").length;
 
    if (lettersWithClassShow === lettersWithClassLetter) {
-        startUpScreen.style.display = "none";
+       startUpScreen.style.display = "none";
         endGameScreen.textContent = "You Win!!!!";
         overlay.style.display = "block";
         overlay.classList.add("win");
