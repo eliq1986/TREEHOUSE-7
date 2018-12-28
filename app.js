@@ -1,8 +1,6 @@
-const qwertyDiv = document.getElementById("qwerty");
-const startUpScreen = document.querySelector("a");
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
-const lose = document.querySelector("h2");
+const endGameScreen = document.querySelector("h2");
 
 const phrasesArr = ["Do or do not",
     "May the force be with you",
@@ -78,7 +76,7 @@ function checkLetter(buttonClicked) { //Removes
 * Changes button color to diff class; button also disabled
  *********************************************************/
 
-qwertyDiv.addEventListener("click", (event) => {
+document.getElementById("qwerty").addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
         const button = event.target;
         button.className = "chosen";
@@ -124,13 +122,13 @@ const lettersWithClassShow = document.getElementsByClassName("show").length;
 
    if (lettersWithClassShow === lettersWithClassLetter) {
         startUpScreen.style.display = "none";
-        lose.textContent = "You Win!!!!";
+        endGameScreen.textContent = "You Win!!!!";
         overlay.style.display = "block";
         overlay.classList.add("win");
 
     } else if (missed >= 5) {
         startUpScreen.style.display = "none";
-        lose.textContent = "Try again";
+        endGameScreen.textContent = "Try again";
         overlay.style.display = "block";
         overlay.classList.add("lose");
 
