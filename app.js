@@ -112,6 +112,7 @@ document.getElementById("qwerty").addEventListener("click", event => {
 
 
     }
+<<<<<<< HEAD
     /*********************************************************
     * SCOBOARD CHECKER
     * Compares length of both elements with diff classes, if they match win.
@@ -134,5 +135,29 @@ document.getElementById("qwerty").addEventListener("click", event => {
              endGameOverlay("Try again.....", "lose");
         }
     });
+=======
+/*********************************************************
+* SCOBOARD CHECKER
+* Compares length of both elements with diff classes, if they match win.
+*********************************************************/
+
+const lettersWithClassLetter = document.getElementsByClassName("letter").length;
+const lettersWithClassShow = document.getElementsByClassName("show").length;
+
+   if (lettersWithClassShow === lettersWithClassLetter) {
+       startUpScreen.style.display = "none";
+        endGameScreen.textContent = "You Win!!!!";
+        overlay.style.display = "block";
+        overlay.classList.add("win");
+
+    } else if (missed >= 5) {
+        startUpScreen.style.display = "none";
+        endGameScreen.textContent = "Try again";
+        overlay.style.display = "block";
+        overlay.classList.add("lose");
+
+    }
+});
+>>>>>>> c1ad9e0c154edf01230fb065226ec4b14bf81093
 
 addPhraseToDisplay(splitRandomPhrase);
