@@ -1,6 +1,8 @@
 const phraseDisplay = document.querySelector("ul");
 const overlay = document.getElementById("overlay");
 const endGameScreen = document.querySelector("h2");
+const startUpScreen = document.querySelector("a");
+
 
 const phrasesArr = ["Do or do not",
     "May the force be with you",
@@ -76,7 +78,7 @@ function checkLetter(buttonClicked) { //Removes
 * Changes button color to diff class; button also disabled
  *********************************************************/
 
-document.getElementById("qwerty").addEventListener("click", (event) => {
+document.getElementById("qwerty").addEventListener("click", event => {
     if (event.target.tagName === "BUTTON") {
         const button = event.target;
         button.className = "chosen";
@@ -89,9 +91,7 @@ document.getElementById("qwerty").addEventListener("click", (event) => {
     if (letterFound === undefined) {
             missed++;
             const hearts = document.querySelectorAll("img")[0];
-            console.log(document.querySelectorAll("img")[0].nextElementSibling);
             hearts.src = "images/lostHeart.png";
-
         }
         if (missed === 2) {
             const img = document.querySelectorAll("img")[1];
@@ -112,27 +112,27 @@ document.getElementById("qwerty").addEventListener("click", (event) => {
 
 
     }
-/*********************************************************
-* SCOBOARD CHECKER
-* Compares length of both elements with diff classes, if they match win.
-*********************************************************/
+    /*********************************************************
+    * SCOBOARD CHECKER
+    * Compares length of both elements with diff classes, if they match win.
+    *********************************************************/
+    const lettersWithClassLetter = document.getElementsByClassName("letter").length;
+    const lettersWithClassShow = document.getElementsByClassName("show").length;
 
-const lettersWithClassLetter = document.getElementsByClassName("letter").length;
-const lettersWithClassShow = document.getElementsByClassName("show").length;
+     function endGameOverlay(text,classAdded) {
+         startUpScreen.style.display = "none";
+         overlay.style.display = "block";
+         endGameScreen.textContent = text;
+        overlay.classList.add(classAdded);
+     }
 
-   if (lettersWithClassShow === lettersWithClassLetter) {
-        startUpScreen.style.display = "none";
-        endGameScreen.textContent = "You Win!!!!";
-        overlay.style.display = "block";
-        overlay.classList.add("win");
-
-    } else if (missed >= 5) {
-        startUpScreen.style.display = "none";
-        endGameScreen.textContent = "Try again";
-        overlay.style.display = "block";
-        overlay.classList.add("lose");
-
-    }
-});
+       if (lettersWithClassShow === lettersWithClassLetter) {
+         setTimeout(()=> {
+           endGameOverlay("You Win!!!!","win");
+         }, 800);
+        } else if (missed >= 5) {
+             endGameOverlay("Try again.....", "lose");
+        }
+    });
 
 addPhraseToDisplay(splitRandomPhrase);
