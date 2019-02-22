@@ -88,31 +88,24 @@ document.getElementById("qwerty").addEventListener("click", event => {
 * If button returned from function checkLetter is undefinded, below runs
 * Remove hearts aka tries from scoreboard
 *********************************************************/
-    if (letterFound === undefined) {
+function removeHeart(index) {
+  const img = document.querySelectorAll("img")[index];
+  img.src = "images/lostHeart.png";
+}
+    if (!letterFound) {
             missed++;
-            const hearts = document.querySelectorAll("img")[0];
-            hearts.src = "images/lostHeart.png";
-        }
-        if (missed === 2) {
-            const img = document.querySelectorAll("img")[1];
-            img.src = "images/lostHeart.png";
-
-
+            removeHeart(0);
+        } else if (missed === 2) {
+          removeHeart(1)
         } else if (missed === 3) {
-            const img = document.querySelectorAll("img")[2];
-            img.src = "images/lostHeart.png";
-
+          removeHeart(2)
         } else if (missed === 4) {
-            const img = document.querySelectorAll("img")[3];
-            img.src = "images/lostHeart.png";
+          removeHeart(3);
         } else if (missed === 5) {
-            const img = document.querySelectorAll("img")[4];
-            img.src = "images/lostHeart.png";
+          removeHeart(4);
         }
-
 
     }
-<<<<<<< HEAD
     /*********************************************************
     * SCOBOARD CHECKER
     * Compares length of both elements with diff classes, if they match win.
@@ -134,30 +127,27 @@ document.getElementById("qwerty").addEventListener("click", event => {
         } else if (missed >= 5) {
              endGameOverlay("Try again.....", "lose");
         }
-    });
-=======
+
 /*********************************************************
 * SCOBOARD CHECKER
 * Compares length of both elements with diff classes, if they match win.
 *********************************************************/
 
-const lettersWithClassLetter = document.getElementsByClassName("letter").length;
-const lettersWithClassShow = document.getElementsByClassName("show").length;
+const totalLenghtWithClassNameLetter = document.getElementsByClassName("letter").length;
+const totalLengthWithClassNameShow = document.getElementsByClassName("show").length;
 
-   if (lettersWithClassShow === lettersWithClassLetter) {
-       startUpScreen.style.display = "none";
-        endGameScreen.textContent = "You Win!!!!";
-        overlay.style.display = "block";
-        overlay.classList.add("win");
+function controlsOverlay(endText, display, className, beginningText = "none") {
+  startUpScreen.style.display = beginningText;
+   endGameScreen.textContent = endText;
+   overlay.style.display = display;
+   overlay.classList.add(className);
+}
 
+   if (totalLengthWithClassNameShow === totalLenghtWithClassNameLetter) {
+     controlsOverlay("You Win!!!", "block", "win");
     } else if (missed >= 5) {
-        startUpScreen.style.display = "none";
-        endGameScreen.textContent = "Try again";
-        overlay.style.display = "block";
-        overlay.classList.add("lose");
-
+      controlsOverlay("Try again", "block", "lose");
     }
-});
->>>>>>> c1ad9e0c154edf01230fb065226ec4b14bf81093
+ });
 
 addPhraseToDisplay(splitRandomPhrase);
